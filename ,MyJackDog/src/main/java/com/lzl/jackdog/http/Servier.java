@@ -1,7 +1,6 @@
 package com.lzl.jackdog.http;
 
 import org.dom4j.DocumentException;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
@@ -67,7 +66,7 @@ public class Servier {
     }
 
     public static void main(String[] args) throws DocumentException, IOException, URISyntaxException {
-        new Servier().run(8080);
+        new Servier().run(8088);
     }
 }
 

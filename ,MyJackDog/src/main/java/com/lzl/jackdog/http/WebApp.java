@@ -4,7 +4,6 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -18,6 +17,7 @@ public class WebApp {
     Map<String,String> urlToName = new HashMap<String, String>();
     Map<String,String> nameToClassName = new HashMap<String, String>();
     private static final String HOME = System.getenv("JM_HOME");
+    private final ClassLoader classLoader = new JMClassLoader();
 
     public static WebApp parseXML() throws DocumentException, MalformedURLException, URISyntaxException {
         WebApp webApp = new WebApp();
@@ -66,9 +66,8 @@ public class WebApp {
     }
 
     private Controller findInstance(String className) throws IOException {
-        Class<?> cls = null;
         try {
-            cls = Class.forName(className);
+            Class<?> cls = classLoader.loadClass(className);
             return (Controller) cls.newInstance();
         } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
             throw new IOException(e);

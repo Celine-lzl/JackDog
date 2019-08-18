@@ -11,8 +11,8 @@ public class Response {
 
     private OutputStream os;
     private Status status;
-    private Map<String,String> headers = new HashMap<String, String>();
-    private byte[] buf = new byte[8192];
+    private Map<String,String> headers = new HashMap();
+    private final byte[] buf = new byte[8192];
     private int offset = 0;
 
     public Response(OutputStream os) {
@@ -30,7 +30,7 @@ public class Response {
 
     private void setDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-        setHeader("Data", sdf.format(new Date()));
+        setHeader("Date", sdf.format(new Date()));
     }
 
     private void setServer() {

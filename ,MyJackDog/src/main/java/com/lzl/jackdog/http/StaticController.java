@@ -1,7 +1,6 @@
 package com.lzl.jackdog.http;
 
 import java.io.*;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +52,7 @@ public class StaticController extends Controller{
     }
 
     private String getFileName(String url) {
-        if(url == null) {
+        if(url.equals("/")) {
             url = "/index.html";
         }
         String filename = JM_Home +  File.separator + "webapp" + File.separator + url.replace("/", File.separator);

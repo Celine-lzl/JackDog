@@ -33,6 +33,11 @@
             <artifactId>dom4j</artifactId>
             <version>2.1.1</version>
         </dependency>
+
+        <!--添加Jedis的依赖，jar包一直下不下来-->
+
+
+
     </dependencies>
 
 </project>
